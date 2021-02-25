@@ -39,3 +39,25 @@ actions created by the GitHub community. To use an action in a workflow, you mus
 A runner is a server that has the GitHub Actions runner application installed. You can use runners hosted by GitHub, 
 or you can host your own.A runner listens for available jobs, runs one job at the time, and report the progress logs,
  and results back to GitHub. For GitHub-hosted runners, each job in a workflow runs in a fresh virtual environment.
+
+
+## Workflow Structures:
+in your repo create folder .github/workflows 
+and in it add the yaml file representing your workflow.
+
+```yaml
+name: learn-github-actions
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: npm install -g bats
+      - run: bats -v
+
+```
+commit these changes and commit to your repo
+
+
